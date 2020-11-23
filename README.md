@@ -1,8 +1,6 @@
 # FurnaceExpFarmLimiter
 Spigot plugin allows to configure furnace recipe experience for limiting furnace experience farms.
 
-Configuration
-
 ```
 # FurnaceExpFarmLimiter
 # Plugin created by kovalski
