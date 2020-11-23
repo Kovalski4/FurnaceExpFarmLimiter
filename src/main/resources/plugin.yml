@@ -1,0 +1,11 @@
+name: FurnaceExpFarmLimiter
+version: ${project.version}
+main: org.kovalski.furnaceexpfarmlimiter.FurnaceExpFarmLimiter
+api-version: 1.13
+authors: [Kovalski]
+description: This plugin allows to configure furnace recipe experience for limiting furnace experience farms.
+commands:
+  FurnaceExpFarmLimiter:
+    usage: /<command>
+  ExpItem:
+    usage: /<command>
