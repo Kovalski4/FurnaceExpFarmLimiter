@@ -3,6 +3,7 @@ Spigot plugin allows to configure furnace recipe experience for limiting furnace
 
 Configuration
 
+```
 # FurnaceExpFarmLimiter
 # Plugin created by kovalski
 config-version: 1.0
@@ -49,3 +50,4 @@ messages:
   usage_fefl: "&aUsage: /FurnaceExpFarmLimiter reload"
   error_no_permission: "%prefix% &cYou don't have permission for use this command!"
   error_no_item: "%prefix% &cHold item before using the command.
+```
