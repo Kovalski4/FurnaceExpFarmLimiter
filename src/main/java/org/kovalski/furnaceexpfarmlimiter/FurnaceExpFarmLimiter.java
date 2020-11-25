@@ -61,10 +61,11 @@ public final class FurnaceExpFarmLimiter extends JavaPlugin {
     private void checkUpdate(){
         Logger logger = this.getLogger();
         new UpdateChecker(this, 86034).getVersion(version -> {
-            if (!this.getDescription().getVersion().equalsIgnoreCase(version)) {
+            double spigotVer = Double.parseDouble(version.replaceAll("v", ""));
+            double currentVer = Double.parseDouble(this.getDescription().getVersion().replaceAll("v", ""));
+            if (currentVer < spigotVer) {
                 logger.info("§bNew version is available! Please download a new build");
-            }
-        });
+            }});
     }
 
     public void reloadConfig(){
