@@ -1,15 +1,19 @@
 package org.kovalski.furnaceexpfarmlimiter;
 
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
+import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.kovalski.furnaceexpfarmlimiter.cmds.ExpItemCommand;
 import org.kovalski.furnaceexpfarmlimiter.cmds.ReloadCommand;
 import org.kovalski.furnaceexpfarmlimiter.config.MessageUtil;
 import org.kovalski.furnaceexpfarmlimiter.config.UTFConfig;
+import org.kovalski.furnaceexpfarmlimiter.misc.UpdateChecker;
 import org.kovalski.furnaceexpfarmlimiter.recipe.RecipeManager;
 import org.kovalski.furnaceexpfarmlimiter.recipe.RecipeReader;
 
 import java.io.File;
+import java.util.logging.Logger;
 
 public final class FurnaceExpFarmLimiter extends JavaPlugin {
 
@@ -28,6 +32,8 @@ public final class FurnaceExpFarmLimiter extends JavaPlugin {
         messageUtil = new MessageUtil();
         loadCommands();
         recipeReader = new RecipeReader();
+        loadbStats();
+        checkUpdate();
         Bukkit.getLogger().info("§b["+this.getName()+"] Plugin loaded successfully!");
     }
 
@@ -44,6 +50,21 @@ public final class FurnaceExpFarmLimiter extends JavaPlugin {
     private void loadCommands(){
         getCommand("ExpItem").setExecutor(new ExpItemCommand());
         getCommand("FurnaceExpFarmLimiter").setExecutor(new ReloadCommand());
+    }
+
+    @SuppressWarnings("unused")
+    private void loadbStats(){
+        int pluginId = 9486; // <-- Replace with the id of your plugin!
+        Metrics metrics = new Metrics(this, pluginId);
+    }
+
+    private void checkUpdate(){
+        Logger logger = this.getLogger();
+        new UpdateChecker(this, 86034).getVersion(version -> {
+            if (!this.getDescription().getVersion().equalsIgnoreCase(version)) {
+                logger.info("§bNew version is available! Please download a new build");
+            }
+        });
     }
 
     public void reloadConfig(){
